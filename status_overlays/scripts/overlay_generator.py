@@ -482,7 +482,7 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-       - ended
+        - ended
     """
                 template_string += ended_series_section  # Add Ended Series section at the end
             else:
@@ -523,7 +523,7 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-       - canceled
+        - canceled
     """
                 template_string += canceled_series_section  # Add Ended Series section at the end
             else:
