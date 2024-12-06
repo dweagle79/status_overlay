@@ -512,7 +512,7 @@ templates:
       font_size: {get_with_defaults(overlay_settings, 'font_size', 'font_size')}
       font_color: "{get_with_defaults(canceled_series_settings, 'font_color', 'font_color')}"
       horizontal_align: {get_with_defaults(overlay_settings, 'horizontal_align', 'horizontal_align')}
-      vertical_align: {get_with_defaults(overlay_settings, 'vertical_align, vertical_align')}
+      vertical_align: {get_with_defaults(overlay_settings, 'vertical_align', 'vertical_align')}
       horizontal_offset: {get_with_defaults(overlay_settings, 'horizontal_offset', 'horizontal_align')}
       vertical_offset: {get_with_defaults(overlay_settings, 'vertical_offset', 'vertical_offset')}
       back_color: "{get_with_defaults(canceled_series_settings, 'back_color', 'canceled_back_color')}"
@@ -596,8 +596,8 @@ templates:
                     returns_next_section = f'''
 # RETURNS NEXT BANNER/TEXT DAY {i}
   {library_name} Returns Next {mmddyyyy}:
-    variables: {{text: {get_with_defaults(returns_next_settings, 'text', 'returns_text')} {mmdd}, weight: {weight}, font_color" "{get_with_defaults(returns_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(returns_next_settings, 'back_color', 'returning_back_color')}", date: {mmddyyyy}, status: 0}}
-    template: {{name: TV Show Status}}
+    variables: {{text: {get_with_defaults(returns_next_settings, 'text', 'returns_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(returns_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(returns_next_settings, 'back_color', 'returning_back_color')}", date: {mmddyyyy}, status: 0}}
+    template: {{name: {library_name} Status}}
     filters:
       last_episode_aired.before: {date_14_days_prior}
     '''
