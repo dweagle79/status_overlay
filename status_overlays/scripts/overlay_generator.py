@@ -223,9 +223,9 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-        - returning
-        - planned
-        - production
+      - returning
+      - planned
+      - production
       release.after: today
 """
 
@@ -266,11 +266,11 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-        - returning
-        - planned
-        - production
-        - ended
-        - canceled
+      - returning
+      - planned
+      - production
+      - ended
+      - canceled
       first_episode_aired.after: {date_21_days_prior}
 """
                 template_string += new_series_section  # Add New Series section at the end
@@ -346,9 +346,9 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-        - returning
-        - planned
-        - production
+      - returning
+      - planned
+      - production
       last_episode_aired.after: {date_15_days_prior}
     """
                 template_string += airing_series_section  # Add Airing Series section at the end
@@ -482,7 +482,7 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-        - ended
+      - ended
     """
                 template_string += ended_series_section  # Add Ended Series section at the end
             else:
@@ -523,7 +523,7 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-        - canceled
+      - canceled
     """
                 template_string += canceled_series_section  # Add Ended Series section at the end
             else:
@@ -564,9 +564,9 @@ templates:
     plex_all: true
     filters:
       tmdb_status:
-        - returning
-        - planned
-        - production
+      - returning
+      - planned
+      - production
     """
                 template_string += returning_series_section  # Add Returning Series section at the end
             else:
