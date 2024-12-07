@@ -298,14 +298,14 @@ templates:
 
                     weight = 90 - i + 1  # Start with weight 89 and decrease by 1 each iteration
                     
-                    new_airing_next_section = f'''
+                    new_airing_next_section = f"""
 # NEW AIRING NEXT BANNER/TEXT DAY {i}
   {library_name} New Airing Next {mmddyyyy}: 
     variables: {{text: {get_with_defaults(new_airing_next_settings, 'text', 'new_airing_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(new_airing_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(new_airing_next_settings, 'back_color', 'new_airing_back_color')}", date: {mmddyyyy}, status: 0}}
     template: {{name: {library_name} Status}}
     filters:
       first_episode_aired.after: {date_21_days_prior}
-    '''
+    """
 
                     template_string += new_airing_next_section  # Add each "New Airing Next" section
 
@@ -372,44 +372,11 @@ templates:
                 airing_today_section = f"""
 # AIRING TODAY BANNER/TEXT
   {library_name} Airing Today:
-    sync_mode: sync
-    builder_level: show
-    overlay:
-      group: status
-      weight: 75
-      name: text({get_with_defaults(airing_today_settings, 'text', 'today_text')}) 
-      font: "{get_with_defaults(overlay_settings, 'font', 'font')}"
-      font_size: {get_with_defaults(overlay_settings, 'font_size', 'font_size')}
-      font_color: "{get_with_defaults(airing_today_settings, 'font_color', 'font_color')}"
-      horizontal_align: {get_with_defaults(overlay_settings, 'horizontal_align', 'horizontal_align')}
-      vertical_align: {get_with_defaults(overlay_settings, 'vertical_align', 'vertical_align')}
-      horizontal_offset: {get_with_defaults(overlay_settings, 'horizontal_offset', 'horizontal_offset')}
-      vertical_offset: {get_with_defaults(overlay_settings, 'vertical_offset', 'vertical_offset')}
-      back_color: "{get_with_defaults(airing_today_settings, 'back_color', 'airing_back_color')}"
-      back_width: {get_with_defaults(overlay_settings, 'back_width', 'back_width')}
-      back_height: {get_with_defaults(overlay_settings, 'back_height', 'back_height')}
-      back_radius: {get_with_defaults(overlay_settings, 'back_radius', 'back_radius')}
-    ignore_blank_results: {get_with_defaults(overlay_settings, 'ignore_blank_results', 'ignore_blank_results')}
-    tmdb_discover:
-      air_date.gte: {air_date_today}
-      air_date.lte: {air_date_today}
-      timezone: {get_with_defaults(overlay_settings, 'timezone', 'time_zone')}
-      with_status: {get_with_defaults(overlay_settings, 'with_status', 'with_status')}
+    variables: {{text: {get_with_defaults(airing_today_settings, 'text', 'airing_next_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(airing_today_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(airing_today_settings, 'back_color', 'airing_back_color')}", date: {air_date_today}, status: 0}}
+    template: {{name: {library_name} Status}}
 """
                 template_string += airing_today_section  # Add Airing Today section at the end
 
-                # Conditionally add the "watch_region" and "with_watch_monetization_types" line
-                if use_watch_region:
-                    template_string += f"{indent3}watch_region: {get_with_defaults(overlay_settings, 'watch_region', 'watch_region')}\n"
-                    template_string += f"{indent3}with_watch_monetization_types: {get_with_defaults(overlay_settings, 'with_watch_monetization_types', 'with_watch_monetization_types')}\n"
-
-                # Conditionally add the 'with_original_language' line
-                if not is_anime:
-                    template_string += f"{indent3}with_original_language: {get_with_defaults(overlay_settings, 'with_original_language', 'with_orignal_languate')}\n"
-
-                # Add the 'limit' setting, always included
-                template_string += f"{indent3}limit: {get_with_defaults(overlay_settings, 'limit', 'limit')}\n"
-                
             else:
                 logger.info(f"{indentlog}Airing Today set to false. 'Airing Today' overlay not created")
 
@@ -434,14 +401,14 @@ templates:
 
                     weight = 74 - i + 1  # Start with weight 74 and decrease by 1 each iteration
                     
-                    airing_next_section = f'''
+                    airing_next_section = f"""
 # AIRING NEXT BANNER/TEXT DAY {i}
   {library_name} Airing Next {mmddyyyy}:
     variables: {{text: {get_with_defaults(airing_next_settings, 'text', 'airing_next_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(airing_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(airing_next_settings, 'back_color', 'airing_back_color')}", date: {mmddyyyy}, status: 0}}
     template: {{name: {library_name} Status}}
     filters:
       last_episode_aired.after: {date_15_days_prior}
-    '''
+    """
 
                     template_string += airing_next_section  # Add each "New Airing Next" section
             else:
@@ -593,14 +560,14 @@ templates:
 
                     weight = 43 - i + 1  # Start with weight 43 and decrease by 1 each iteration
                     
-                    returns_next_section = f'''
+                    returns_next_section = f"""
 # RETURNS NEXT BANNER/TEXT DAY {i}
   {library_name} Returns Next {mmddyyyy}:
     variables: {{text: {get_with_defaults(returns_next_settings, 'text', 'returns_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(returns_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(returns_next_settings, 'back_color', 'returning_back_color')}", date: {mmddyyyy}, status: 0}}
     template: {{name: {library_name} Status}}
     filters:
       last_episode_aired.before: {date_14_days_prior}
-    '''
+    """
 
                     template_string += returns_next_section  # Add each "Returns Next" section
 
