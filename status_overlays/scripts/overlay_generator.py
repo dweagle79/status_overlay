@@ -372,7 +372,7 @@ templates:
                 airing_today_section = f"""
 # AIRING TODAY BANNER/TEXT
   {library_name} Airing Today:
-    variables: {{text: {get_with_defaults(airing_today_settings, 'text', 'airing_next_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(airing_today_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(airing_today_settings, 'back_color', 'airing_back_color')}", date: {air_date_today}, status: 0}}
+    variables: {{text: {get_with_defaults(airing_today_settings, 'text', 'today_text')}, weight: 75, font_color: "{get_with_defaults(airing_today_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(airing_today_settings, 'back_color', 'airing_back_color')}", date: {air_date_today}, status: 0}}
     template: {{name: {library_name} Status}}
 """
                 template_string += airing_today_section  # Add Airing Today section at the end
@@ -404,7 +404,7 @@ templates:
                     airing_next_section = f"""
 # AIRING NEXT BANNER/TEXT DAY {i}
   {library_name} Airing Next {mmddyyyy}:
-    variables: {{text: {get_with_defaults(airing_next_settings, 'text', 'airing_next_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(airing_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(airing_next_settings, 'back_color', 'airing_back_color')}", date: {mmddyyyy}, status: 0}}
+    variables: {{text: {get_with_defaults(airing_next_settings, 'text', 'next_text')} {mmdd}, weight: {weight}, font_color: "{get_with_defaults(airing_next_settings, 'font_color', 'font_color')}", back_color: "{get_with_defaults(airing_next_settings, 'back_color', 'airing_back_color')}", date: {mmddyyyy}, status: 0}}
     template: {{name: {library_name} Status}}
     filters:
       last_episode_aired.after: {date_15_days_prior}
