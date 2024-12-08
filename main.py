@@ -77,7 +77,7 @@ def main():
         logger.info("Validation successful. Generating overlay files for Kometa.")
         logger.info("")
         create_library_yaml(main_directory)
-        logger.info("All library overlay files created. Returning to Shedule.")
+        logger.info("All library overlay files created.")
         
     except Exception as e:
         logger.error(f"An error occurred: {e}")
