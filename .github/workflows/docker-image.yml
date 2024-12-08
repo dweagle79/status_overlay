@@ -5,16 +5,14 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+    
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag status-overlay:lastest
-    - name: Push Docker image
-      run: docker push ghcr.io/${{ github.repository }}:latest
+    - name: Build and Push Image
+    - run: | 
+        login --username dweagle79 --password {{ secrets.GIT_HUB_TOKEN }} ghcr.io
+        docker build . --file Dockerfile --tag ghcr.io/dweagle79/status-overlay:lastest
+        docker push ghcr.io/dweagle79/status-overlay:lastest
