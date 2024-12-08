@@ -3,9 +3,23 @@ name: Docker Build and Push
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - Dockerfile
+      - main.py
+      - overlay_generator.py
+      - requirements.txt
+      - settings.py
+      - validate_settings.py
   pull_request:
     branches: [ "main" ]
-    
+    paths:
+      - Dockerfile
+      - main.py
+      - overlay_generator.py
+      - requirements.txt
+      - settings.py
+      - validate_settings.py
+
 jobs:
   build:
     runs-on: ubuntu-latest
