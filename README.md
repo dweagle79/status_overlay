@@ -1,4 +1,4 @@
-# status_overlay
+# status-overlay
 Creates Kometa show status YAML files and updates dates. 
 
 Docker Setup
