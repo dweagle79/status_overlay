@@ -11,8 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.GITHUB_ACTOR }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
     - name: Build and Push Image
       run: | 
-        login --username dweagle79 --password {{ secrets.GIT_HUB_TOKEN }} ghcr.io
         docker build . --file Dockerfile --tag ghcr.io/dweagle79/status-overlay:lastest
         docker push ghcr.io/dweagle79/status-overlay:lastest
