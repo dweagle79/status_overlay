@@ -9,7 +9,7 @@ services:
     container_name: status-overlay
     environment:
       - SCHEDULE=06:00  # Schedule run time
-      - RUN_NOW:true    @ Will bypass the schedule once on container startup
+      - RUN_NOW:true    # Will bypass the schedule once on container startup
     volumes:
       - /path/to/status-overlay/config:/config:rw
     restart: unless-stopped  
