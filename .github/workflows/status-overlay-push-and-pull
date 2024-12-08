@@ -7,26 +7,16 @@ on:
   pull_request:
     branches:
       - main 
+  workflow_dispatch
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Log in to GitHub Container Registry
-      uses: docker/login-action@v2
-      with:
-        username: dweagle79
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        push: true
-        tags: |
-            ghcr.io/dweagle79/status-overlay:latest
+      -uses: actions/checkout@V3
+      -name: build and push the image
+        run: |
+          docker longin --username dweagle79 --password ${{ secrets.GIT_HUB_TOKEN }} ghcr.io
+          docker build . --tag ghcr.io/dweagle79/status-overlay:latest
+          docker push ghcr.io/dweagle79/status-overlay:latest
 
