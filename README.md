@@ -8,6 +8,7 @@ services:
     image: ghcr.io/dweagle79/status-overlay:latest
     container_name: status-overlay
     environment:
+      - TZ=America/New_York
       - SCHEDULE=06:00  # Schedule run time
       - RUN_NOW:true    # Will bypass the schedule once on container startup
     volumes:
