@@ -10,6 +10,7 @@ on:
       - requirements.txt
       - settings.py
       - validate_settings.py
+      - run_status.py
 
   workflow_dispatch:
 

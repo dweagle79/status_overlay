@@ -1,5 +1,7 @@
 import os
 import re
+import sys
+import signal
 import logging
 from settings import load_settings
 from ruamel.yaml import YAML
@@ -8,6 +10,12 @@ from datetime import datetime, timedelta
 # Initialize YAML handler for writing to files
 yaml = YAML()
 main_directory = '/config'
+
+def shutdown_gracefully(signal, frame):
+    logger.info("Shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_gracefully)
 
 # Get logger from the main.py logging configuration
 logger = logging.getLogger(__name__)  # This ensures you use the same logger instance from main.py

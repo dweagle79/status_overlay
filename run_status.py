@@ -1,10 +1,20 @@
 import os
 import subprocess
 import sys
+import signal
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 import time
 import logging
+
+# Gracefully shutdown function
+def shutdown_gracefully(signal, frame):
+    logger.info("Gracefully shutting down...")
+    scheduler.shutdown()  # Shut down the scheduler
+    sys.exit(0)  # Exit the script
+
+# Register
+signal.signal(signal.SIGTERM, shutdown_gracefully)
 
 # Configure logger
 logging.getLogger('apscheduler').setLevel(logging.ERROR)

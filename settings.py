@@ -1,4 +1,6 @@
 import os
+import sys
+import signal
 import logging
 from ruamel.yaml import YAML
 
@@ -8,6 +10,12 @@ yaml = YAML()
 logger = logging.getLogger(__name__)
 
 settings_filename = "overlay-settings.yml"
+
+def shutdown_gracefully(signal, frame):
+    logger.info("Shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_gracefully)
 
 # Create default settings yaml file
 settings = f"""# Settings for overlay configurations
