@@ -9,6 +9,12 @@ main_directory = '/config'
 log_directory = os.path.join(main_directory, "logs")
 settings_file_path = os.path.join(main_directory, "overlay-settings.yml")
 
+def shutdown_gracefully(signal, frame):
+    logger.info("Shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_gracefully)
+
 def log_setup():
     #Setup log formatter and handler with rotation
     
