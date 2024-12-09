@@ -5,7 +5,7 @@ Docker Setup
 ```
 services:
   status-overlay:
-    image: ghcr.io/dweagle79/status-overlay:latest
+    image: dweagle/status-overlay:latest
     container_name: status-overlay
     environment:
       - TZ=America/New_York
