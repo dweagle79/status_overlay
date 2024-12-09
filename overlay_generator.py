@@ -604,7 +604,7 @@ templates:
             # Ensure the save folder exists and exit script if it doesn't
             if not os.path.exists(overlay_save_folder):
                 logger.warning(f"Overlay folder doesn't exist or permissions not set.  Exiting script")
-                logger.warning(f"If using path outside of mounted container config volume, you need to mount a volume for to this.")
+                logger.warning(f"If using path outside of mounted container config volume, you need to mount a volume to this.")
                 exit()
 
             # Normalize the library name
