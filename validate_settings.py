@@ -10,6 +10,12 @@ yaml = YAML()
 logger = logging.getLogger(__name__)  # This ensures you use the same logger instance from main.py
 settings_filename = "overlay-settings.yml"
 
+def shutdown_gracefully(signal, frame):
+    print("Shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_gracefully)
+
 ############################
 # Validate Settings File   #
 ############################
