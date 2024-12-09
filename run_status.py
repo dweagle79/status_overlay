@@ -13,7 +13,6 @@ def shutdown_gracefully(signal, frame):
     scheduler.shutdown()  # Shut down the scheduler
     sys.exit(0)  # Exit the script
 
-# Register SIGTERM handler
 signal.signal(signal.SIGTERM, shutdown_gracefully)
 
 # Configure logger
