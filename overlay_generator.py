@@ -1,5 +1,7 @@
 import os
 import re
+import sys
+import signal
 import logging
 from settings import load_settings
 from ruamel.yaml import YAML
@@ -10,7 +12,7 @@ yaml = YAML()
 main_directory = '/config'
 
 def shutdown_gracefully(signal, frame):
-    print("Shutting down gracefully...")
+    logger.info("Shutting down gracefully...")
     sys.exit(0)
 
 signal.signal(signal.SIGTERM, shutdown_gracefully)
