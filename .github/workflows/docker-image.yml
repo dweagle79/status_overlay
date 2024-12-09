@@ -28,6 +28,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build and Push Image
       run: | 
-        docker login --username: dweagle79 --password: {{ secrets.GIT_HUB_TOKEN }} ghcr.io
+        docker login --username dweagle79 --password {{ secrets.GIT_HUB_TOKEN }} ghcr.io
         docker build . --file Dockerfile --tag ghcr.io/dweagle79/status-overlay:lastest
         docker push ghcr.io/dweagle79/status-overlay:lastest
