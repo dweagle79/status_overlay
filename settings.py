@@ -9,6 +9,12 @@ logger = logging.getLogger(__name__)
 
 settings_filename = "overlay-settings.yml"
 
+def shutdown_gracefully(signal, frame):
+    print("Shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_gracefully)
+
 # Create default settings yaml file
 settings = f"""# Settings for overlay configurations
 # This script will create show status overlay ymls that Kometa can use to create new, airing, ended, canceled and returning overlays.  
