@@ -1,5 +1,7 @@
 import os
 import re
+import sys
+import singal
 import logging
 from ruamel.yaml import YAML
 from settings import load_settings
@@ -11,7 +13,7 @@ logger = logging.getLogger(__name__)  # This ensures you use the same logger ins
 settings_filename = "overlay-settings.yml"
 
 def shutdown_gracefully(signal, frame):
-    print("Shutting down gracefully...")
+    logger.info("Shutting down gracefully...")
     sys.exit(0)
 
 signal.signal(signal.SIGTERM, shutdown_gracefully)
