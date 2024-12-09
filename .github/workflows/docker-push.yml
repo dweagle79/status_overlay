@@ -10,15 +10,7 @@ on:
       - requirements.txt
       - settings.py
       - validate_settings.py
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - Dockerfile
-      - main.py
-      - overlay_generator.py
-      - requirements.txt
-      - settings.py
-      - validate_settings.py
+
   workflow_dispatch:
 
 jobs:
