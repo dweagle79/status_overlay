@@ -1,17 +1,6 @@
 name: Docker Develop Build
 
 on:
-  push:
-    branches: [ "develop" ]
-    paths:
-      - Dockerfile
-      - main.py
-      - overlay_generator.py
-      - requirements.txt
-      - settings.py
-      - validate_settings.py
-      - run_status.py
-
   workflow_dispatch:
 
 jobs:
