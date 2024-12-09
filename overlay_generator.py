@@ -9,6 +9,12 @@ from datetime import datetime, timedelta
 yaml = YAML()
 main_directory = '/config'
 
+def shutdown_gracefully(signal, frame):
+    print("Shutting down gracefully...")
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, shutdown_gracefully)
+
 # Get logger from the main.py logging configuration
 logger = logging.getLogger(__name__)  # This ensures you use the same logger instance from main.py
 
