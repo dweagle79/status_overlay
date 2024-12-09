@@ -7,6 +7,7 @@ services:
   status-overlay:
     image: dweagle/status-overlay:latest
     container_name: status-overlay
+    user: 1000:1002
     environment:
       - TZ=America/New_York
       - SCHEDULE=06:00  # Schedule run time
