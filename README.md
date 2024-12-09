@@ -2,7 +2,7 @@
 Creates Kometa show status YAML files and updates dates. 
 
 Docker Setup
-```
+```YAML
 services:
   status-overlay:
     image: dweagle/status-overlay:latest
@@ -18,7 +18,7 @@ services:
 ```
 
 Default Settings File
-```
+```YAML
 # Settings for overlay configurations
 # This script will create show status overlay ymls that Kometa can use to create new, airing, ended, canceled and returning overlays.  
 # These overlays files will create dates on the poster overlays. Setting the container to run daily will update airing/return dates.
