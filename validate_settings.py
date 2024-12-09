@@ -1,7 +1,7 @@
 import os
 import re
 import sys
-import singal
+import signal
 import logging
 from ruamel.yaml import YAML
 from settings import load_settings
