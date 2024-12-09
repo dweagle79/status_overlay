@@ -1,7 +1,7 @@
 # status-overlay
 Creates Kometa show status YAML files and updates dates. 
 
-Docker Setup
+## Docker Setup
 ```YAML
 services:
   status-overlay:
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped  
 ```
 
-Default Settings File
+## Default Settings File
 ```YAML
 # Settings for overlay configurations
 # This script will create show status overlay ymls that Kometa can use to create new, airing, ended, canceled and returning overlays.  
