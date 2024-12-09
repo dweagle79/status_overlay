@@ -1,4 +1,6 @@
 import os
+import sys
+import signal
 import logging
 from logging.handlers import RotatingFileHandler
 from validate_settings import validate_settings
