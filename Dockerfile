@@ -1,10 +1,15 @@
 # Start from a Python base image
 FROM python:3.10-slim
 
-# Install tzdata for timezone support
-RUN apt-get update && apt-get install -y tzdata
+# Install tzdata for timezone support and build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tzdata \
+    gcc \
+    python3-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set Timezone environment variable (can be overriddent)
+# Set Timezone environment variable (can be overridden)
 ENV TZ=UTC
 
 # Configure timezone
@@ -13,7 +18,10 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Set the working directory to /app
 WORKDIR /app
 
-# Install dependencies
+# Upgrade pip to the latest version
+RUN pip install --upgrade pip
+
+# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
