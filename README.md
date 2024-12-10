@@ -32,12 +32,6 @@ python3 main.py
 
 ## Default Settings File
 ```YAML
-# Settings for overlay configurations
-# This script will create show status overlay ymls that Kometa can use to create new, airing, ended, canceled and returning overlays.  
-# These overlays files will create dates on the poster overlays. Setting the container to run daily will update airing/return dates.
-# I put the script folder in my Kometa directory and set a cron/task job to run main.py daily prior to kometa running.
-# Then I link the yaml files to run in my Kometa config.
-
 # TMDB_Discover settings pull series info to find air dates, etc.  Using the default settings
 # limits the "junk" show results that are pulled for a library with mainly US, English language shows.  
 # You will get less "No TVDB/TMDB id" errors in Kometa.
