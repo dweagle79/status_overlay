@@ -11,20 +11,27 @@ services:
     environment:
       - TZ=America/New_York
       - SCHEDULE=06:00  # Schedule run time
-      - RUN_NOW:false    # true will bypass the schedule once on container startup
+      - RUN_NOW:false   # true will bypass the schedule once on container startup
     volumes:
-      - /path/to/status-overlay/config:/config:rw
+      # Mount your local directory to the containers internal config folder.
+      # By default, the logs, settings, and overlays will be created here.
+      - /path/to/status-overlay/config:/config:rw 
+      # If you want overlay files to go to a seperate folder, ex. inside kometa, do
+      # another mount to the save folder you entered in the settings (overlay_save_folder:)
+      # Make sure the path matches the settings file path.
+      - /path/to/kometa/overlays:/path/to/kometa/overlays:rw
     restart: unless-stopped  
+```
+## Manual Run
+If you are doing testing on your overlay settings and don't want to restart the container
+multiple times or set the env RUN_NOW variable to true, you can connect to the running 
+container and run the following command.  It will run the main.py script and do a complete run.
+```ruby
+python3 main.py
 ```
 
 ## Default Settings File
 ```YAML
-# Settings for overlay configurations
-# This script will create show status overlay ymls that Kometa can use to create new, airing, ended, canceled and returning overlays.  
-# These overlays files will create dates on the poster overlays. Setting the container to run daily will update airing/return dates.
-# I put the script folder in my Kometa directory and set a cron/task job to run main.py daily prior to kometa running.
-# Then I link the yaml files to run in my Kometa config.
-
 # TMDB_Discover settings pull series info to find air dates, etc.  Using the default settings
 # limits the "junk" show results that are pulled for a library with mainly US, English language shows.  
 # You will get less "No TVDB/TMDB id" errors in Kometa.
