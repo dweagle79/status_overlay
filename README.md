@@ -13,8 +13,8 @@ services:
       - SCHEDULE=06:00  # Schedule run time
       - RUN_NOW:false   # true will bypass the schedule once on container startup
     volumes:
-      # Mount your local directory to the containers internal config folder
-      # by default logs, settings, and overlays will be created here.
+      # Mount your local directory to the containers internal config folder.
+      # By default, the logs, settings, and overlays will be created here.
       - /path/to/status-overlay/config:/config:rw 
       # If you want overlay files to go to a seperate folder, ex. inside kometa, do
       # another mount to the save folder you entered in the settings (overlay_save_folder:)
