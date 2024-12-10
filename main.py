@@ -2,6 +2,7 @@ import os
 import sys
 import signal
 import logging
+import shutil
 from logging.handlers import RotatingFileHandler
 from validate_settings import validate_settings
 from settings import create_settings_file
