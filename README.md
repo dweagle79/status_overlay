@@ -17,10 +17,9 @@ services:
     restart: unless-stopped  
 ```
 ## Manual Run
-If you are doing testing on your overlay settings and don't want to restart the 
-container multiple times or set the env RUN_NOW variable to true, you can connect to the
-the running container and run the follwoing command.  It will run the main.py script and do a complete run.
-
+If you are doing testing on your overlay settings and don't want to restart the container
+multiple times or set the env RUN_NOW variable to true, you can connect to the running 
+container and run the follwoing command.  It will run the main.py script and do a complete run.
 ```ruby
 python3 main.py
 ```
