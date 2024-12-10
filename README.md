@@ -18,6 +18,7 @@ services:
       - /path/to/status-overlay/config:/config:rw 
       #if you want overlay files to go to a seperate folder, ex. inside kometa, do
       # another mount to the save folder you entered in the settings (overlay_save_folder:)
+      # Make sure the path matches the settings file path.
       - /path/to/kometa/overlays:/path/to/kometa/overlays:rw
     restart: unless-stopped  
 ```
