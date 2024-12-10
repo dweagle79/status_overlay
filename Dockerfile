@@ -23,7 +23,7 @@ COPY requirements.txt .
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 # Copy font folder
-COPY ./font /config/font
+COPY ./fonts /config/fonts
 
 # Copy all necessary Python scripts
 COPY . .
